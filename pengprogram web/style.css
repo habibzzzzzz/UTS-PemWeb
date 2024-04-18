@@ -42,42 +42,6 @@ header {
     font-weight: 600;
 }
 
-main .section1{
-    color: white;
-    margin: auto;
-}
-
-main .section1 img{
-    width: 100%;
-    height: auto;
-    margin-bottom: 10%;
-    display: block;
-    z-index: 1;
-}   
-
-
-main .section1 h1{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white; /* Warna teks */
-    font-size: 3em; /* Ukuran font */
-    position: absolute;
-} 
-
-
-main .slide2{
-  color: white;
-  margin: auto;
-}
-
-main .slide2 img{
-  width: 100%;
-  height: auto;
-  display: block;
-  z-index: 1;
-}
 
 main .slide2 h2{
   top: 25%;
@@ -288,9 +252,7 @@ footer {
   text-align: center;
 }
 
-#newsFeed{
-  margin-top: 10%;
-}
+
 
 
 
