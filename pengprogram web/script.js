@@ -66,3 +66,37 @@ const initSlider = () => {
 
 window.addEventListener("resize", initSlider);
 window.addEventListener("load", initSlider);
+
+function fetchRSSFeed(url) {
+    return fetch(url)
+        .then(response => response.text())
+        .then(data => new window.DOMParser().parseFromString(data, 'text/xml'));
+}
+
+// Fungsi untuk menampilkan berita dari RSS Feed
+function displayNews(feed) {
+    const items = feed.querySelectorAll('item'); // Ubah sesuai dengan struktur RSS Feed
+    const newsFeedContainer = document.getElementById('newsFeed');
+    let html = '<h2>Berita Terbaru:</h2><ul>';
+
+    items.forEach(item => {
+        const title = item.querySelector('title').textContent;
+        const link = item.querySelector('link').textContent;
+        const description = item.querySelector('description').textContent;
+        html += `<li><a href="${link}" target="_blank">${title}</a><p>${description}</p></li>`;
+    });
+
+    html += '</ul>';
+    newsFeedContainer.innerHTML = html;
+}
+
+// Panggil fungsi untuk mengambil dan menampilkan RSS Feed
+const rssFeedUrl = 'https://www.cnnindonesia.com/rss'; // Ganti dengan URL RSS Feed yang ingin Anda gunakan
+fetchRSSFeed(rssFeedUrl)
+    .then(feed => displayNews(feed))
+    .catch(error => console.error('Gagal mengambil RSS Feed:', error));
+
+
+document.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+    });
